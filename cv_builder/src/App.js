@@ -21,6 +21,13 @@ function App() {
         <InputNum label={"Age"} />
         <InputNum label={"Mobile"} />
       </div>
+
+      <div>
+        <hr />
+      </div>
+
+      <h3 style={{textAlign: "center"}}>Education details</h3>
+
     </div>
   );
 }
