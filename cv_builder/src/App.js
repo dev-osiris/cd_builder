@@ -1,32 +1,18 @@
 import './style.css'
-import InputText from './components/InputText';
-import InputNum from './components/InputNum';
+import AboutYou from './components/AboutYou';
+import Heading from './components/Heading';
 
 function App() {
   return (
     //flex direction is columnwise in container
-    <div id='container'>  
-      <div className='mainHeading'>
-        <h1>Cv builder</h1>
-        <hr />
-        <h3>About you</h3>
-      </div>
+    <div id='container'> 
+      <h1>Cv builder</h1>
+      
+      <Heading title={"About you"} />
 
-      <div className='two-ip-field-single-row'>
-        <InputText label={"First name"} />
-        <InputText label={"Last name"} />
-      </div>
+      <AboutYou />
 
-      <div className='two-ip-field-single-row'>
-        <InputNum label={"Age"} />
-        <InputNum label={"Mobile"} />
-      </div>
-
-      <div>
-        <hr />
-      </div>
-
-      <h3 style={{textAlign: "center"}}>Education details</h3>
+      <Heading title={"Education"} />
 
     </div>
   );

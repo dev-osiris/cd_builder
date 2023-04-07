@@ -34,8 +34,21 @@ body {
     padding: 0 10%;
   }
 
-  .two-ip-field-single-row{
+  .About-you-section{
     display: flex;
     justify-content: space-between;
+    flex-direction: column;
+    margin-top: 5%;
+  }
+
+  .About-you-section > div{
+    display: flex;
+    justify-content: space-between;
+  }
+
+  .submit-btn{
+    align-self: flex-start;
+    height: 40px;
+    width: 90px;
     margin-top: 5%;
   }
