@@ -1,61 +1,108 @@
 import React, { Component } from "react";
 
 class AboutYou extends Component{
-    constructor(){
-        super();
+    constructor(props){
+        super(props);
+
+        this.state = {
+            firstName: "",
+            lastName: "",
+            age: "",
+            mobile: "",
+            isEditOn: true,
+        };
     }
 
-    handleSubAboutYou = () => {
- 
-        let AboutYouSec = document.getElementsByClassName("About-you-section")[0];
-        AboutYouSec.innerText = 
+    handleFirstNameChange = (event) => {
+        this.setState({
+            firstName: event.target.value
+        })
+    }
 
-            `${document.getElementById("firstName").value}\n` +
-            `${document.getElementById("lastName").value}\n` +
-            `${document.getElementById("age").value}\n` +
-            `${document.getElementById("mobNumber").value}`;
+    handleLastNameChange = (event) => {
+        this.setState({
+            lastName: event.target.value
+        })
+    }
+
+    handleValueChange = (event) => {
+        this.setState({
+            age: event.target.value
+        })
+    }
+
+    handleMobChange = (event) => {
+        this.setState({
+            mobile: event.target.value
+        })
+    }
+
+    handleSubBtn = () => {
+        this.setState({
+            isEditOn: false
+        })
+    }
+
+    handleEditClick = () => {
+        this.setState({
+            isEditOn: true
+        })
     }
 
     render(){
         return(
-            <>
-                <div className="About-you-section">
-                    <div>
-                        <div>
-                            <label htmlFor="input">First name</label>
-                            <br />
-                            <input id="firstName" type="text" />
-                        </div>
-
-                        <div>
-                            <label htmlFor="input">Last name</label>
-                            <br />
-                            <input id="lastName" type="text" />
-                        </div>
-                    </div>
-
-                    <br />
-                    <br />
-                    <div>
-                        <div>
-                            <label htmlFor="input">Age</label>
-                            <br />
-                            <input id="age" type="number" />
-                        </div>
-
-                        <div>
-                            <label htmlFor="input">Mobile</label>
-                            <br />
-                            <input id="mobNumber" type="number" />
-                        </div>
-                    </div>
-                </div>
-
-
+            <div>
                 <div>
-                    <button className="submit-btn" onClick={this.handleSubAboutYou}>Submit</button>
+                    { this.state.isEditOn ? (
+                        <div className="About-you-section">
+                            <div>
+                                <div>
+                                    <label htmlFor="input">First name</label>
+                                    <br />
+                                    <input id="firstName" value={this.state.firstName} onChange={this.handleFirstNameChange} type="text" />
+                                </div>
+
+                                <div>
+                                    <label htmlFor="input">Last name</label>
+                                    <br />
+                                    <input id="lastName" value={this.state.lastName} onChange={this.handleLastNameChange} type="text" />
+                                </div>
+                            </div>
+
+                            <br />
+                            <br />
+
+                            <div>
+                                <div>
+                                    <label htmlFor="input">Age</label>
+                                    <br />
+                                    <input id="age" value={this.state.age} onChange={this.handleValueChange} type="number" />
+                                </div>
+
+                                <div>
+                                    <label htmlFor="input">Mobile</label>
+                                    <br />
+                                    <input id="mobNumber" value={this.state.mobile} onChange={this.handleMobChange} type="number" />
+                                </div>
+                            </div>
+
+                            <div>
+                                <button className="submit-btn" onClick={this.handleSubBtn}>Submit</button>
+                            </div>  
+                        </div>
+
+                    ) : (
+                        <div>
+                            <div>{this.state.firstName} {this.state.lastName}</div>
+                            <div>{this.state.age}</div>
+                            <div>{this.state.mobile}</div>
+                            
+                            <button className="submit-btn" onClick={this.handleEditClick}>Edit</button>
+                        </div>
+                    ) }
+                        
                 </div>
-            </>
+            </div>
         );
     }
 }

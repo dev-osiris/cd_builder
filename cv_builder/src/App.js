@@ -1,6 +1,7 @@
 import './style.css'
 import AboutYou from './components/AboutYou';
 import Heading from './components/Heading';
+import Education from './Education';
 
 function App() {
   return (
@@ -13,6 +14,8 @@ function App() {
       <AboutYou />
 
       <Heading title={"Education"} />
+
+      <Education />
 
     </div>
   );
