@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import AddEdu from "./AddEdu";
 
 class AboutYou extends Component{
     constructor(props){
@@ -9,7 +10,10 @@ class AboutYou extends Component{
             Degree: "",
             From: "",
             To: "",
+            isEditOn: true,
+            isAddMoreOn: false,
         };
+        console.log("in education.js")
     }
 
     handleInstitutionChange = (event) => {
@@ -36,21 +40,36 @@ class AboutYou extends Component{
         })
     }
 
-    handleSubBtn = (event) => {
-        event.target.InnerHTML = "tot";
-        //  <div>
-        //     <div>{this.state.Institution}</div>
-        //     <div>{this.state.Degree}</div>
-        //     <div>{this.state.From}</div>
-        //     <div>{this.state.To}</div>
-        // </div> 
+    handleSubBtn = () => {
+        this.setState({
+            isEditOn: false
+        })    
     }
+
+    handleDelClick = () => {
+        this.setState({
+            Institution: "",
+            Degree: "",
+            To: "",
+            From: "",
+            isEditOn: false,
+            isAddMoreOn: false,
+        })
+    }
+
+    handleAddMoreClick = () => {
+        this.setState({
+            isAddMoreOn: true
+        })
+    }
+
 
 
     render(){
         return(
             <div>
                 <div>
+                { this.state.isEditOn ? (
                     <div className="About-you-section">
                         <div>
                             <div>
@@ -85,10 +104,51 @@ class AboutYou extends Component{
 
                         <div>
                             <button className="submit-btn" onClick={this.handleSubBtn}>Submit</button>
-                        </div>  
+                        </div> 
+
+                        {this.isAddMoreOn ? (
+                            <div>
+                                <h1>isEditOn = T, isAddMoreOn = T</h1>
+                            </div>
+                            
+                            ) : (
+
+                            <div>
+                                <h1>isEditOn = T, isAddMoreOn = F</h1>
+                            </div>
+                        )}
+
                     </div>
 
+                ) : (
+
+                    // submit btn is clicked
+
+                    <div>
+                        <div>{this.state.Institution}</div>
+                        <div>{this.state.Degree}</div>
+                        <div>{this.state.From}</div>
+                        <div>{this.state.To}</div>
                         
+                        <button className="submit-btn" onClick={this.handleDelClick}>Delete</button>
+                        
+                        <button className="submit-btn" onClick={this.handleAddMoreClick}>Add more</button>
+
+                        {this.isAddMoreOn ? (
+                            <div>
+                                <h1>isEditOn = F, isAddMoreOn = T</h1>
+                            </div>
+                            
+                            ) : (
+
+                            <div>
+                                <h1>isEditOn = F, isAddMoreOn = F</h1>
+                            </div>
+                        )}
+
+                        <AddEdu open={this.state.isAddMoreOn} />
+                    </div>
+                )}
                         
                 </div>
             </div>

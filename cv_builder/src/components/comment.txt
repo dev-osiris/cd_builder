@@ -1,0 +1,8 @@
+initially have empty form for Education
+
+have one button "save"
+
+clicking save:
+    -form should turn into text
+    -save button turn into Edit
+    -new button appear called "Add new Education"
